@@ -2,6 +2,7 @@
 
 from django.views.generic import ListView,DetailView
 from django.views.generic.edit import CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Post
 
 # Create your views here.
@@ -18,7 +19,7 @@ class PostDetailView(DetailView):
     model = Post
     context_object_name = "post"
 
-class CreatePostView(CreateView):
+class CreatePostView(LoginRequiredMixin,CreateView):
     template_name = "feed/create.html"
     model = Post
     fields = ['text']
