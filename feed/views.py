@@ -1,6 +1,7 @@
 #(for function based view)from django.shortcuts import render
 
 from django.views.generic import ListView,DetailView
+from django.views.generic.edit import CreateView
 from .models import Post
 
 # Create your views here.
@@ -16,3 +17,8 @@ class PostDetailView(DetailView):
     template_name = "feed/detail.html"
     model = Post
     context_object_name = "post"
+
+class CreatePostView(CreateView):
+    template_name = "feed/create.html"
+    model = Post
+    fields = ['text']
