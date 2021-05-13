@@ -6,13 +6,13 @@
                 <span class="font-light text-gray-600">{{post.date|date:"F j, Y, g:i a"}}</span>
             </div>
             <div class="mt-2">
-                <p class="mt-2 text-gray-600">{{post.text}}</p>
+                <p class="mt-2 text-gray-600" {% if show_detail_link %}style="white-space: nowrap; width: 250px; overflow: hidden; text-overflow: ellipsis;"{% endif %}>{{post.text}}</p>
             </div>
             <div class="flex justify-between items-center mt-4">
                 {% if show_detail_link %}
                     <a class="text-blue-600 hover:underline" href="{% url 'feed:detail' post.id %}">Read more</a>
                 {% else %}
-                    <span>&nbsp;</span>
+                    <a class="text-blue-600 hover:underline" href="/"> &larr; Go back </a>
                 {% endif %}
                 <div>
                     <a class="flex items-center" href="{% url 'profiles:detail' post.author.username %}">
